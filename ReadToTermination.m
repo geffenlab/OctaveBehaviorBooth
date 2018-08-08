@@ -1,4 +1,6 @@
 function [char_array] = ReadToTermination (srl_handle, term_char)
+% Taken from https://www.edn.com/Pdf/ViewPdf?contentItemId=4440674
+
  % parameter term_char is optional, if not specified
  % then CR = '\r' = 13dec is the default.
 if(nargin == 1)
@@ -20,4 +22,4 @@ end
 
  % Change int array to a char array and return a string array
  char_array = char(int_array);
-endfunction
+endfunction

@@ -1,0 +1,19 @@
+%% test_PTB2AudioOut
+%
+% This script tries to play audio to two different sound cards using the
+% PTB audio functions. Needs to have 2 Lynx cards installed and two
+% speakers attached to relevant outputs. This script assumes both speakers
+% are attached to the CH1 out of the respective audio cards.
+
+clear; close all;
+%%
+
+% Initialize the PTB audio
+InitializePsychSound;
+
+% Get device names from PTB. This returns a struct array of information
+% about audio devices attached to this computer. The speakers will contain
+% the string 'Speakers' in the 'DeviceName' field. We find the relevant
+% device indices so that we can open them in PTB.
+devs = PsychPortAudio('GetDevices');
+speakerIdx = cellfun(@(X)contains(X,'Speakers'),{devs(:)/
