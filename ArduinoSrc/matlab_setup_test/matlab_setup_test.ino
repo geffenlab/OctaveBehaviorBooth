@@ -3,6 +3,8 @@
 
 void setup(){
   Serial.begin(9600);
+
+  Serial.println("testing");
   
   // Wait for matlab to send specific character to arduino
   char a = 'b';
@@ -10,7 +12,6 @@ void setup(){
   {
     a = Serial.read();
   }
-  Serial.flush();
 
   // Send signal that arduino setup has finished
   Serial.println("start");

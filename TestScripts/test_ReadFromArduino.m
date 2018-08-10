@@ -4,13 +4,7 @@
 % attempts to read the Serial output from the 'setup()' function in the 
 % Arduino code.
 
-
-
 clear; close all;
-%% Load instrument-control
-% We need this package to communicate with the Arduino via a serial port
-pkg load instrument-control
-
 %% Params
 serialPort = 'COM3';
 
