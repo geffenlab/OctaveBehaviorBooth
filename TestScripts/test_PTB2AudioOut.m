@@ -37,7 +37,7 @@ fs = 192000;
 tone1 = tone(800,3/2*pi,2,fs);
 tone1 = envelopeKCW(tone1,5,fs);
 
-tone2 = tone(800,3/2*pi,2,fs);
+tone2 = tone(300,3/2*pi,2,fs);
 tone2 = envelopeKCW(tone2,5,fs);
 
 %% Open speakers via PTB and play sound

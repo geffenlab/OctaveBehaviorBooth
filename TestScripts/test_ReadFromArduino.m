@@ -9,7 +9,6 @@
 clear; close all;
 %% Load instrument-control
 % We need this package to communicate with the Arduino via a serial port
-
 pkg load instrument-control
 
 %% Params

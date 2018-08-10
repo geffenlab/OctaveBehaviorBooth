@@ -1,8 +1,18 @@
 function s = setupSerialOctave(comPort)
 % s = setupSerialOctave(comPort)
 % 
-% Initialise serial prot connection between matlab and arduino and chech
-% the connection
+% Initialise serial port connection between Octave and Arduino. We check
+% the connection by sending strings between the two via the serial buffer.
+%
+% Inputs:
+%   comPort  -  A string that is the serial port name
+% Outputs:
+%   s        -  Octave serial object
+%
+% See https://octave.sourceforge.io/instrument-control/overview.html for
+% more info about serial com functions in Octave.
+%
+% xd  8/XX/18  adapted from existing code in behavior repos and commented
 
 %% Set up serial port parameters
 s=serial(comPort);
@@ -18,13 +28,14 @@ set(s,'TimeOut',10);
 % string to signal the arduino to run. Until then, it is paused in the
 % setUp() function of the Arduino code.
 srl_write(s,'a') 
-disp('Serial connection established');
 
 %% Read signal from arduino
 %
 % Here we wait for the arduino to post a specific string to the serial
 % buffer. This tells us that the arduino has loaded its program and has
-% started running it.
+% started running it. For some reason, we cannot read first from Octave, so
+% we need to send a signal to Arduino and then get the string it writes
+% afterwards...
 a = 'b';
 tries = 10;
 while strcmp(a,'start') && tries > 0
@@ -33,8 +44,8 @@ while strcmp(a,'start') && tries > 0
    tries = tries - 1;
 end
 
-if strcmp(a,'a')
-    disp('Serial connection read')
+if strcmp(a,'start')
+    disp('Serial connection established');
 end
 
 
