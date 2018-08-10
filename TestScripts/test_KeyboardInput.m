@@ -10,6 +10,6 @@ while isLoop
   x = kbhit();
   disp(x)
   if x == 'x'
-    isLoop = false
+    isLoop = false;
   end
 end

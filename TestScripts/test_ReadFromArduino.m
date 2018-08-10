@@ -24,10 +24,10 @@ disp(cmdOut);
 s1 = serial(serialPort,9600);
 set(s1,'TimeOut',10);
 
-a = ReadToTermination(s1);
+a = readToTermination(s1);
 disp(a)
 
 srl_write(s1,'a');
 
 pause(3);
-disp(ReadToTermination(s1))
+disp(readToTermination(s1))
