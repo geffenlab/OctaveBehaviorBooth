@@ -17,7 +17,8 @@ InitializePsychSound;
 % device indices so that we can open them in PTB. This will find all
 % speakers on the machine, so we will cross-reference with 'Lynx'.
 devs = PsychPortAudio('GetDevices');
-speakerIdx = cellfun(@(X)contains(X,'Speakers') && contains(X,'Lynx'),{devs(:).DeviceName},'UniformOutput',false);
+speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers')) && ~isempty(strfind(X,'Lynx')),...
+  {devs(:).DeviceName},'UniformOutput',false);
 speakerIdx = find(cell2mat(speakerIdx));
 
 % This above might result in multiple results, as each speaker will be
@@ -27,7 +28,7 @@ speakerIdx = find(cell2mat(speakerIdx));
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
 selectedAPI = audioAPIs{3};
-apiIdx = cellfun(@(X) contains(X,selectedAPI),{devs(:).HostAudioAPIName},'UniformOutput',false);
+apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 
 speakerIdx = intersect(speakerIdx,apiIdx);
