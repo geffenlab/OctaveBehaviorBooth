@@ -15,7 +15,8 @@ pkg load instrument-control
 serialPort = 'COM3';
 
 %% Load arduino with compiled code
-sketchPath = fullfile('C:','Users','behaviour7','Documents','GitHub','2AFC-wheel','hexFiles','wheel_habituation.ino.hex');
+sketchPath = fullfile('C:','Users','behaviour7','Documents','GitHub','OctaveBehaviorBooth',...
+    'ArduinoHex','basic_serial_comm_test.ino.standard.hex');
 [~,cmdOut] = loadArduinoSketch(serialPort,sketchPath);
 disp(cmdOut);
 
@@ -23,10 +24,7 @@ disp(cmdOut);
 s1 = serial(serialPort,9600);
 set(s1,'TimeOut',10);
 
-a = readToTermination(s1);
+% Make 10 attempts to read from the serial buffer. If there is nothing
+% there, stop.
+a = readToTermination(s1,10);
 disp(a)
-
-srl_write(s1,'a');
-
-pause(3);
-disp(readToTermination(s1))
