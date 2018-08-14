@@ -19,10 +19,10 @@ The `instrument-control` package for Octave needs to be installed and loaded to 
 One of the test scripts requires `Psychtoolbox3` to be installed. Specifically, it requires v3.0.13. See Octave install instructions below for more details.
 
 ### Octave install instructions
-1. Download and install Octave 4.0.3 64bit. There are no official Windows binaries for the 64bit version of this Octave. They can be found [here](http://www.tatsuromatsuoka.com/octave/Eng/Win/) instead. Download the third link: `octave-4.0.3-installer-x64-2.exe.zip`.
+1. Download and install Octave 4.2.0 64bit. The official installer can be found [here](https://ftp.gnu.org/gnu/octave/windows/). Download the third link: `octave-4.2.0-w64-installer.exe`.
 2. Download and install the `instrument-control` package ([link](https://octave.sourceforge.io/instrument-control/index.html)). Install by navigating to the directory where you downloaded the package and typing: `pkg install *filename*`, where *filename* is the name of the compressed file downloaded. You can check that the package was installed successfully by typing: `pkg load instrument-control`.
 3. **Optional** You can set Octave to load the `instrument-control` toolbox on startup by typing: `edit '~/.octaverc'` and adding `pkg load instrument-control` to the file that is opened in the editor.
 
 ### PTB3 install instructions
 1. Download and install the latest GStreamer package from [here](https://gstreamer.freedesktop.org/). Version 1.14.2 has been tested to work. **This is necessary to ensure PTB compatibility!**
-2. Acquire the installation script from the Psychtoobox [website](https://raw.githubusercontent.com/Psychtoolbox-3/Psychtoolbox-3/master/Psychtoolbox/DownloadPsychtoolbox.m). Copy this .m file somewhere and navigate to it in Octave. Then run: `DownloadPsychtoolbox(*dir*,'Psychtoolbox-3.0.13')` where *dir* is the directory in which PTB3 should be installed. We are using this version of Psychtoolbox because it has seemingly full compatibility with Octave. I've tried several other combinations of Octave/PTB pairings and they all seemed to have some issues.
+2. Acquire the installation script from the Psychtoobox [website](https://raw.githubusercontent.com/Psychtoolbox-3/Psychtoolbox-3/master/Psychtoolbox/DownloadPsychtoolbox.m). Copy this .m file somewhere and navigate to it in Octave. Then run: `DownloadPsychtoolbox(*dir*)` where *dir* is the directory in which PTB3 should be installed. Not that *dir* needs to be a full file path. The latest Psychtoolbox should work with Octave 4.2.0 x64. 
