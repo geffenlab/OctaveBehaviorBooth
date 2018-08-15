@@ -18,7 +18,7 @@ speakerIdx = find(cell2mat(speakerIdx));
 % when I tested them...
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
-selectedAPI = 'Windows DirectSound';
+selectedAPI = 'MME';
 apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 

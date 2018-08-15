@@ -26,7 +26,7 @@ recorderIdx = find(cell2mat(recorderIdx));
 % Devices
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
-selectedAPI = audioAPIs{3};
+selectedAPI = audioAPIs{2};
 apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 
@@ -57,7 +57,6 @@ if ~strcmp(selectedAPI,'ASIO')
 end
 WaitSecs(2);
 [data, ~, ~, t.rec] = PsychPortAudio('GetAudioData', io.r);
-% PsychPortAudio('Stop',io.r);
 
 figure;
 plot(data);

@@ -16,7 +16,7 @@ sind = find(contains({devs.Description},speakerName));
 sdev = devs(sind);
 rind = find(contains({devs.Description},recorderName));
 rdev = devs(rind);
-
+%%
 s = daq.createSession('directsound');
 r = daq.createSession('directsound');
 sch = addAudioOutputChannel(s,sdev.ID,1);
@@ -31,6 +31,7 @@ r.IsContinuous = true;
 
 queueOutputData(s,tone1');
 
+%%
 hf = figure;
 hp = plot(zeros(1000,1));
 T = title('Discrete FFT Plot');
