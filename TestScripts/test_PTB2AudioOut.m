@@ -52,3 +52,6 @@ PsychPortAudio('FillBuffer', s2, tone2);
 % Play audio
 PsychPortAudio('Start',s1,1);
 PsychPortAudio('Start',s2,1);
+
+%% 
+PsychPortAudio('Close');

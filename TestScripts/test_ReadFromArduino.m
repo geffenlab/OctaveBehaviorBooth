@@ -15,7 +15,7 @@ sketchPath = fullfile('C:','Users','behaviour7','Documents','GitHub','OctaveBeha
 disp(cmdOut);
 
 %% Set up serial reader
-s1 = serial(serialPort,9600);
+s1 = serial(serialPort,9601);
 set(s1,'TimeOut',10);
 
 % Make 10 attempts to read from the serial buffer. If there is nothing
