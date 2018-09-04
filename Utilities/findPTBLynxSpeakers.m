@@ -13,9 +13,8 @@ speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers')) && ~isempty(strfind(X,'
   {devs(:).DeviceName},'UniformOutput',false);
 speakerIdx = find(cell2mat(speakerIdx));
 
-% Find devices that use the Windows DirectSound API. This is the one we 
-% want to use to control the sound cards. The other ones have odd artifacts
-% when I tested them...
+% Find devices that use the MME API. Windows DirectSound has artifacts.
+% This is the one we want to use to control the sound cards.
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
 selectedAPI = 'MME';
