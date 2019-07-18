@@ -36,6 +36,8 @@ while all(int_out == 1)
         out = '';
         return;
     end
+    
+    
 end
 
 % Proper exit, so assign the serial string to the output

@@ -20,7 +20,7 @@ set(s,'BaudRate', 9600);
 set(s,'ByteSize',8);
 set(s,'StopBits', 1);
 set(s,'Parity','N');
-set(s,'TimeOut',10);
+set(s,'TimeOut',0.1);
 
 %% Read signal from arduino
 %

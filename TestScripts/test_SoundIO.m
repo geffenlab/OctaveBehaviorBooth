@@ -2,7 +2,7 @@
 %
 % This script test the input output of a sound card using a pure sine wave.
 
-clear; %close all;
+clear; close all;
 %%
 io.fs = 192e3;
 fs = io.fs;
@@ -15,18 +15,18 @@ io.dur = 2;
 %%
 
 devs = PsychPortAudio('GetDevices');
-speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers (Lynx')) && ~isempty(strfind(X,'Lynx')),...
+speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers (2- Lynx')) && ~isempty(strfind(X,'Lynx')),...
     {devs(:).DeviceName},'UniformOutput',false);
 speakerIdx = find(cell2mat(speakerIdx));
 
-recorderIdx = cellfun(@(X)~isempty(strfind(X,'Record 01+02 (Lynx E44)')) && ~isempty(strfind(X,'Lynx')),...
+recorderIdx = cellfun(@(X)~isempty(strfind(X,'Record 01+02 (2- Lynx E44)')) && ~isempty(strfind(X,'Lynx')),...
     {devs(:).DeviceName},'UniformOutput',false);
 recorderIdx = find(cell2mat(recorderIdx));
 
 % Devices
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
-selectedAPI = audioAPIs{2};
+selectedAPI = audioAPIs{3};
 apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 

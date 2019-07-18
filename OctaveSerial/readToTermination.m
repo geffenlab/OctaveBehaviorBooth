@@ -36,6 +36,7 @@ while not_terminated
     if(val == term_char)
         not_terminated = false;
     end
+
     
     % Sometimes val can be empty for some reason. This seems to occur at
     % line endings though, so this should not change functionality. Just
@@ -48,6 +49,7 @@ while not_terminated
         int_array(i) = val;
         i = i + 1;
     end
+
 end
 
 % Remove LF and CR chars from int_array. These make string comparisons
