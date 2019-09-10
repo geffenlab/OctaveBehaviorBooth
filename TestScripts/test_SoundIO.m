@@ -15,7 +15,7 @@ io.dur = 2;
 %%
 
 devs = PsychPortAudio('GetDevices');
-speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers (2- Lynx')) && ~isempty(strfind(X,'Lynx')),...
+speakerIdx = cellfun(@(X)~isempty(strfind(X,'Speakers (Lynx')) && ~isempty(strfind(X,'Lynx')),...
     {devs(:).DeviceName},'UniformOutput',false);
 speakerIdx = find(cell2mat(speakerIdx));
 
@@ -26,7 +26,7 @@ recorderIdx = find(cell2mat(recorderIdx));
 % Devices
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
-selectedAPI = audioAPIs{3};
+selectedAPI = audioAPIs{2};
 apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 

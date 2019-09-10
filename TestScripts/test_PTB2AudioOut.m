@@ -27,7 +27,7 @@ speakerIdx = find(cell2mat(speakerIdx));
 % results.
 audioAPIs = unique({devs(:).HostAudioAPIName});
 disp(audioAPIs);
-selectedAPI = audioAPIs{3};
+selectedAPI = audioAPIs{2};
 apiIdx = cellfun(@(X) ~isempty(strfind(X,selectedAPI)),{devs(:).HostAudioAPIName},'UniformOutput',false);
 apiIdx = find(cell2mat(apiIdx));
 
@@ -35,10 +35,10 @@ speakerIdx = intersect(speakerIdx,apiIdx);
 
 %% Create audio tones to test the outputs
 fs = 192000;
-tone1 = tone(800,3/2*pi,2,fs);
+tone1 = tone(5000,3/2*pi,2,fs);
 tone1 = envelopeKCW(tone1,5,fs);
 
-tone2 = tone(300,3/2*pi,2,fs);
+tone2 = tone(13000,3/2*pi,2,fs);
 tone2 = envelopeKCW(tone2,5,fs);
 
 %% Open speakers via PTB and play sound
